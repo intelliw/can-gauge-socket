@@ -1,3 +1,4 @@
+// server.js
 var can = require('socketcan');
 var express = require('express');
 var app = express();
