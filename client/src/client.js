@@ -10,7 +10,7 @@ const MSG_BYTES = 8;                                                      // num
 
 const canMsg = { id: MSG_ID, data: Buffer.alloc(MSG_BYTES) };
 
-var revs = { value: 0, offset: 0, byteLength: 4, increment: 240, quiver: 100 };
+var revs = { value: 0, offset: 0, byteLength: 4, increment: 240, bounce: 100 };
 var speed = { value: 0, offset: 4, byteLength: 2, max: 155, increment: 1 };
 var up = true;
 
@@ -22,7 +22,7 @@ setInterval(() => {
         revs.value += revs.increment;
 
     } else {
-        revs.value = up ? revs.value + revs.quiver : revs.value - revs.quiver;
+        revs.value = up ? revs.value + revs.bounce : revs.value - revs.bounce;
         up = !up
     }
     revs.value = revs.value > 7000 ? 1000 : revs.value;
