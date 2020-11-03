@@ -16,7 +16,7 @@ var up = true;
 
 setInterval(() => {
 
-    // speed and revs
+    // increment speed and revs 
     if (speed.value < speed.max) {
         speed.value += speed.increment;
         revs.value += revs.increment;
