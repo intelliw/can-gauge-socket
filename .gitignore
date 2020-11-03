@@ -3,6 +3,11 @@
 ~*.*
 *~
 DELETE-*.*
+<<<<<<< HEAD
 client/
 server/node_modules/
+=======
+client/node_modules/
+server/
+>>>>>>> a0d1bab953060cf2c0f8feb66f2cb75f398bf65a
 archive/
