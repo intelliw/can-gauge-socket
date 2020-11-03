@@ -3,6 +3,6 @@
 ~*.*
 *~
 DELETE-*.*
-client/node_modules/
+client/
 server/node_modules/
 archive/
