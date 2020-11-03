@@ -5,6 +5,11 @@
 .gitignore
 .git/info/exclude
 DELETE-*.*
+<<<<<<< HEAD
 client/node_modules/
 server/
+=======
+client/
+server/node_modules/
+>>>>>>> ab18707c40d32650dd20f660ab455afc0005348c
 archive/
