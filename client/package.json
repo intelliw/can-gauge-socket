@@ -1,0 +1,28 @@
+{
+  "name": "can-gauge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intelliw/can-gauge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intelliw/can-gauge/issues"
+  },
+  "homepage": "https://github.com/intelliw/can-gauge#readme",
+  "dependencies": {
+    "canvas-gauges": "^2.1.5",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "socketcan": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
