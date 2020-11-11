@@ -1,32 +1,49 @@
-var can = require('socketcan');
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+const can = require('socketcan');
+const express = require('express')
+const SseStream = require('ssestream')
 
-var channel = can.createRawChannel("can0", true);
 
-var carInfo = {};
-carInfo.speed = 0
-carInfo.revs = 0
-
-app.use(express.static(__dirname + "/views"));
-app.use('/scripts', express.static(__dirname + '/scripts'));
-
-io.on('connection', function(client) {
-    console.log('client connected')
-})
-
-setInterval(() => {
-    io.emit('carMessage', carInfo)
-}, 100)
-
-channel.addListener("onMessage", function(msg) { 
+// can channel listener
+const carInfo = {speed: 0, revs: 0};
+const channel = can.createRawChannel("can0", true);
+channel.addListener("onMessage", function (msg) {
     carInfo.revs = msg.data.readUIntBE(0, 4)
     carInfo.speed = msg.data.readUIntBE(4, 2)
     console.log(carInfo)
 })
-
 channel.start()
 
-server.listen(3000)
+
+// web server 
+const app = express()
+app.use(express.static(__dirname + "/views"));
+app.use('/scripts', express.static(__dirname + '/scripts'));
+app.get('/sse', (req, res) => {
+
+    // connection open handler
+    console.log('new connection')
+
+    // event stream
+    const sse = new SseStream.default(req)              // need to use .default
+    sse.pipe(res)
+    const pusher = setInterval(() => {
+
+        sse.write({
+            event: 'carMessage',
+            data: carInfo
+        })
+
+    }, 100)
+
+    // connection close handler
+    res.on('close', () => {
+        console.log('lost connection')
+        clearInterval(pusher)
+        sse.unpipe(res)
+    })
+
+})
+app.listen(3001, (err) => {
+    if (err) throw err
+    console.log('server ready on http://rp-can-2:3001')
+})
