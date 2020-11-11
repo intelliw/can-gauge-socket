@@ -7,12 +7,22 @@ on `rp-can-1` (client)
 
 on `rp-can-2` (server)
 
-    nodemon server
+    nodemon sse-server
 
-open server's canvas gauge page on browser 
-http://rp-can-2:3000/websocket.html
+    or
 
-## 
+    nodemon websocket-server
+
+browser
+    
+    http://rp-can-2:3001/sse.html
+
+    or 
+
+    http://rp-can-2:3001/websocket.html
+
+
+## reference
 
 see Intelliweave.wiki `CANbus Edge Gateway PoC` and `SSE Server Sent Events`
 
