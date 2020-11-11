@@ -1,8 +1,16 @@
 # can-gauge
 
 ### to Run 
-canvas gauge page
-http://192.168.1.107:3000/index.html
+on `rp-can-1` (client)
+
+    nodemon client
+
+on `rp-can-2` (server)
+
+    nodemon server
+
+open server's canvas gauge page on browser 
+http://rp-can-2:3000/websocket.html
 
 ## 
 
