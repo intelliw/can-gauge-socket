@@ -40,5 +40,6 @@ see Intelliweave.wiki `CANbus Edge Gateway PoC` and `SSE Server Sent Events`
 
 # shared files
 these folders are from `rp-can-1` (client) and `rp-can-2` (server)
-    `/client` master is `rp-can-1\pishare\can-gauge\client`
-    `/server` master is `rp-can-2\pishare\can-gauge\server`
+
+`/client` master is `rp-can-1\pishare\can-gauge\client`
+`/server` master is `rp-can-2\pishare\can-gauge\server`

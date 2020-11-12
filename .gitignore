@@ -2,6 +2,7 @@
 *.lnk
 ~*.*
 *~
+.gcloudignore
 .gitignore
 .git/info/exclude
 DELETE-*.*
