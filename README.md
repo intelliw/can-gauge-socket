@@ -15,11 +15,11 @@ on `rp-can-2` (server)
 
 browser
     
-    http://rp-can-2:3001/sse.html
+    http://rp-can-2:3001/sse-radial.html
 
     or 
 
-    http://rp-can-2:3001/websocket.html
+    http://rp-can-2:3001/websocket-radial.html
 
 
 ## reference
@@ -30,7 +30,7 @@ see Intelliweave.wiki `CANbus Edge Gateway PoC` and `SSE Server Sent Events`
     
     Server Sent Events 
         SseStream         https://github.com/EventSource/node-ssestream
-        
+
     Rhys Morgan NodeJS video tutorial
         
         https://www.moderndaymods.com/2020/01/26/building-a-canbus-app-part1/
