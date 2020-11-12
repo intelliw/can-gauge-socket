@@ -1,14 +1,17 @@
+//@ts-check
+"use strict";
+
 const can = require('socketcan');
 const express = require('express')
 const SseStream = require('ssestream')
 
-
-// can channel listener
-const carInfo = {speed: 0, revs: 0};
+// CAN listener
 const channel = can.createRawChannel("can0", true);
-channel.addListener("onMessage", function (msg) {
+const carInfo = { speed: 0, revs: 0 };
+channel.addListener("onMessage", (msg) => {
     carInfo.revs = msg.data.readUIntBE(0, 4)
     carInfo.speed = msg.data.readUIntBE(4, 2)
+
     console.log(carInfo)
 })
 channel.start()
@@ -23,22 +26,19 @@ app.get('/sse', (req, res) => {
     // connection open handler
     console.log('new connection')
 
-    // event stream
-    const sse = new SseStream.default(req)              // need to use .default
+    // stream event to browser
+    const sse = new SseStream.default(req)
     sse.pipe(res)
-    const pusher = setInterval(() => {
-
-        sse.write({
+    channel.addListener("onMessage", (msg) => {             // stream eventon CAN message 
+        sse.writeMessage({
             event: 'carMessage',
             data: carInfo
         })
-
-    }, 100)
+    })
 
     // connection close handler
     res.on('close', () => {
         console.log('lost connection')
-        clearInterval(pusher)
         sse.unpipe(res)
     })
 
@@ -47,3 +47,4 @@ app.listen(3001, (err) => {
     if (err) throw err
     console.log('server ready on http://rp-can-2:3001')
 })
+

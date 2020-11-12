@@ -1,4 +1,4 @@
-<!-- test with http://rp-can-2:3001/sse.html -->
+<!-- with gauges. test inside server/src/views with http://rp-can-2:3001/sse.html -->
 <!doctype html>
 
 <html lang="en">
@@ -42,7 +42,7 @@
         document.addEventListener("DOMContentLoaded", onDomReadyHandler())
 
         function onDomReadyHandler(event) {
-            subscribe(new EventSource('/sse'));
+            subscribe(new EventSource('/sse'));         // sse is the mapped path in express server for the sse stream listener
 
         }
 
