@@ -25,7 +25,12 @@ browser
 ## reference
 
 see Intelliweave.wiki `CANbus Edge Gateway PoC` and `SSE Server Sent Events`
-
+    Canvas Gauges
+        https://canvas-gauges.com/
+    
+    Server Sent Events 
+        SseStream         https://github.com/EventSource/node-ssestream
+        
     Rhys Morgan NodeJS video tutorial
         
         https://www.moderndaymods.com/2020/01/26/building-a-canbus-app-part1/
