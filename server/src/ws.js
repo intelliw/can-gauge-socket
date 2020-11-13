@@ -21,7 +21,7 @@ io.on('connection', function(client) {
 })
 
 
-// event stream
+// websocket (socket.io) event stream
 setInterval(() => {
     io.emit('carMessage', carInfo)
 }, 100)

@@ -2,24 +2,29 @@
 
 ### to Run 
 on `rp-can-1` (client)
+    
+    - run canbus generator (client)
 
-    nodemon client
+        nodemon client
 
 on `rp-can-2` (server)
 
-    nodemon sse-server
+    - run canbus listener and sse streamer (serve sent events) server 
 
-    or
+        nodemon sse
 
-    nodemon websocket-server
+    or websocket server
 
-browser
+        nodemon ws
+
+on `browser`
     
+    http://rp-can-2:3001/sse.html
     http://rp-can-2:3001/sse-radial.html
 
     or 
 
-    http://rp-can-2:3001/websocket-radial.html
+    http://rp-can-2:3000/websocket-radial.html
 
 
 ## reference
