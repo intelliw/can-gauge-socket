@@ -19,8 +19,12 @@ channel.start()
 
 // web server 
 const app = express()
+
 app.use(express.static(__dirname + "/views"));
 app.use('/scripts', express.static(__dirname + '/scripts'));
+
+app.get('/', function(req, res){ res.redirect('/sse-linear.html'); });     //.. default page (http://rp-can-2:3001 returns this)
+
 app.get('/sse', (req, res) => {
 
     // connection open handler
@@ -29,10 +33,10 @@ app.get('/sse', (req, res) => {
     // stream event to browser
     const sse = new SseStream.default(req)
     sse.pipe(res)
-    channel.addListener("onMessage", (msg) => {             // stream eventon CAN message 
+    channel.addListener("onMessage", (msg) => {                            // stream eventon CAN message 
         sse.writeMessage({
             event: 'carMessage',
-            data: carInfo
+            data : carInfo
         })
     })
 
