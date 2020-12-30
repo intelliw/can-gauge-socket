@@ -1,5 +1,9 @@
-const MAX_VOLTS = 155;
-const INTERVAL_MILLISECONDS = 1000;
+const SPEED_MAX = 155;
+const SPEED_INCREMENT = 1;
+
+const REVS_MAX = 7000;
+const REVS_INCREMENT = 200;
+const INTERVAL_MS = 150;
 
 var can = require("socketcan");
 
@@ -18,9 +22,12 @@ setInterval(() => {
     var out = {}
     var buff = Buffer.alloc(8)
 
-    if(speed < MAX_VOLTS) {
-        speed = speed + 1
-        revs = revs + 240
+    // accelerate 
+    if(speed < SPEED_MAX) {
+        speed += SPEED_INCREMENT
+        revs += REVS_INCREMENT
+    
+    // top speed, bounce revs
     } else {
         if(up) {
             revs = revs + 100
@@ -31,7 +38,7 @@ setInterval(() => {
         }
     }
 
-    if(revs > 7000) {
+    if (revs > REVS_MAX) {
         revs = 1000
     }
     
@@ -43,7 +50,7 @@ setInterval(() => {
     out.data = buff
 
     channel.send(out)
-}, INTERVAL_MILLISECONDS)
+}, INTERVAL_MS)
 
 
 
