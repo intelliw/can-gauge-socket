@@ -1,3 +1,6 @@
+const MAX_VOLTS = 155;
+const INTERVAL_MILLISECONDS = 1000;
+
 var can = require("socketcan");
 
 var channel = can.createRawChannel('can0', true);
@@ -14,7 +17,8 @@ var up = true
 setInterval(() => {
     var out = {}
     var buff = Buffer.alloc(8)
-    if(speed <155) {
+
+    if(speed < MAX_VOLTS) {
         speed = speed + 1
         revs = revs + 240
     } else {
@@ -30,14 +34,16 @@ setInterval(() => {
     if(revs > 7000) {
         revs = 1000
     }
+    
     buff.writeUIntBE(revs, 0, 4)
     buff.writeUIntBE(speed, 4, 2)
+
     console.log(buff)
     out.id = msg.id
     out.data = buff
 
     channel.send(out)
-}, 100)
+}, INTERVAL_MILLISECONDS)
 
 
 
