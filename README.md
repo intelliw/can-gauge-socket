@@ -50,10 +50,15 @@ see Intelliweave.wiki `CANbus Edge Gateway PoC` and `SSE Server Sent Events`
 
 # shared files
 
-these folders are from `rp-can-1` (client) and `rp-can-2` (server) and `rp-can-3` (gateway) 
+- `\can-gauge` contains the main git repo
 
-`/client` master is `rp-can-1\pishare\can-gauge\client`
+- these remote folders are for running the respective sub-folder replicas of `\can-gauge` 
+    
+    - `/client` master is `rp-can-1\pishare\can-gauge\client`
 
-`/server` master is `rp-can-2\pishare\can-gauge\server`
+    - `/server` master is `rp-can-2\pishare\can-gauge\server`
 
-`/gateway` master is `rp-can-3\pishare\can-gauge\gateway`
+    - `/gateway` master is `rp-can-3\pishare\can-gauge\gateway`
+
+note: gateway is TBD
+        
