@@ -1,4 +1,4 @@
-# can-gauge
+# can-gauge-socket
 
 ### to Run 
 on `can-1` (client)
