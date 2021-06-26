@@ -23,7 +23,7 @@ const app = express()
 app.use(express.static(__dirname + "/views"));
 app.use('/scripts', express.static(__dirname + '/scripts'));
 
-app.get('/', function(req, res){ res.redirect('/sse-linear.html'); });     //.. default page (http://rp-can-2:3001 returns this)
+app.get('/', function(req, res){ res.redirect('/sse-linear.html'); });     //.. default page (http://can-2:3001 returns this)
 
 app.get('/sse', (req, res) => {
 
@@ -49,6 +49,6 @@ app.get('/sse', (req, res) => {
 })
 app.listen(3001, (err) => {
     if (err) throw err
-    console.log('server ready on http://rp-can-2:3001')
+    console.log('server ready on http://can-2:3001')
 })
 
